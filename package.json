@@ -1,8 +1,8 @@
 {
-  "name": "apidoc-plugin-test",
-  "version": "1.0.0",
-  "description": "Only a test and example plugin. It demonstrates the usage of the apidoc hook system.",
-  "author": "Peter Rottmann <rottmann@inveris.de>",
+  "name": "apidoc-plugin-bic-ws",
+  "version": "1.0.3",
+  "description": "Only a simple plugin for websocket support.",
+  "author": "hu jw <gbrjia@gmail.com>",
   "license": {
     "type": "MIT",
     "url": "https://github.com/apidoc/apidoc/blob/master/LICENSE"
@@ -11,18 +11,19 @@
   "homepage": "http://apidocjs.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apidoc/apidoc-plugin-test.git"
+    "url": "https://github.com/coding-fox/apidoc-plugin-test.git"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint",
-    "build-example": "cd .. && apidoc-plugin-test/node_modules/apidoc/bin/apidoc -i apidoc-plugin-test/test/src/ -o apidoc-plugin-test/tmp/ --debug --verbose && cd apidoc-plugin-test",
+    "build-example": "cd .. && apidoc-plugin-bic-ws/node_modules/apidoc/bin/apidoc -i apidoc-plugin-bic-ws/test/src/ -o apidoc-plugin-bic-ws/tmp/ --debug --verbose && cd apidoc-plugin-bic-ws",
     "check-updates": "npm-check-updates"
   },
   "keywords": [
     "apidoc",
     "plugin",
-    "apidoc-plugin"
+    "apidoc-plugin",
+    "apidoc-websocket"
   ],
   "engines": {
     "node": ">= 0.10.0"

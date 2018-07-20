@@ -63,9 +63,10 @@ describe('Create doc and compare with fixture', function() {
         var fixtureContent = fs.readFileSync(fixturePath + '/api_data.json', 'utf8');
         var createdContent = api.data;
 
-        var fixtureLines = fixtureContent.split(/\n/);
-        var createdLines = createdContent.split(/\n/);
+        var fixtureLines = fixtureContent.split(/\n|\r/);
+        var createdLines = createdContent.split(/\n|\r/);
         createdLines.push(''); // Empty line at end.
+        var p = path.join(__dirname, 'fixtures');
 
         for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
             if (fixtureLines[lineNumber] !== createdLines[lineNumber])
