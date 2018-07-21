@@ -45,7 +45,8 @@ describe('Create doc and compare with fixture', function() {
         apidoc.setGeneratorInfos({});
         apidoc.setPackageInfos({
             'name': 'test',
-            'version': '0.0.0'
+            'version': '0.0.0',
+            "wsRequest": "ws://localhost:3000"
         });
 
         api = apidoc.parse({
@@ -66,8 +67,9 @@ describe('Create doc and compare with fixture', function() {
         var fixtureLines = fixtureContent.split(/\n|\r/);
         var createdLines = createdContent.split(/\n|\r/);
         createdLines.push(''); // Empty line at end.
-        var p = path.join(__dirname, 'fixtures');
 
+        var p = path.join(__dirname, 'fixtures');
+        fs.writeFileSync(p + '/api_data2.json', createdLines);
         for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
             if (fixtureLines[lineNumber] !== createdLines[lineNumber])
                 throw new Error('Generated file does not equals to fixture api_data.json in line ' + (lineNumber + 1) +
