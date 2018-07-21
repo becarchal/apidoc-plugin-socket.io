@@ -1,6 +1,6 @@
 {
   "name": "apidoc-plugin-bic-ws",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Only a simple websocket plugin for apidoc.",
   "author": "hu jiawei <gbrjia@gmail.com>",
   "license": {

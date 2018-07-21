@@ -60,7 +60,7 @@ define([
     });
 
     ws = null;
-    
+
   }; // initDynamic
 
   function websocketClear(group, name, version) {
@@ -84,9 +84,25 @@ define([
       $root.find(".websocket-request-response-json").html('connection is closed');
 
     } else {
-      var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
       var msg = $root.find('.websocket-request-param').val();
       if (msg && msg.length > 0) {
+        ws.onmessage = function (event) {
+          if (!$root.find(".websocket-request-response").is(":visible")) {
+            $root.find(".websocket-request-response").fadeTo(250, 1);
+          }
+          var data = event.data;
+          // 处理数据
+          if (typeof data === "string") {
+            $root.find(".websocket-request-response-json").append(data);
+          }
+
+          if (data instanceof ArrayBuffer) {
+            $root.find(".websocket-request-response-json").append(JSON.stringify(data));
+          }
+
+          refreshScrollSpy();
+
+        };
         ws.send(msg);
       } else {
         $root.find('.websocket-request-param').focus();
@@ -97,6 +113,8 @@ define([
   }
 
   function websocketConnect(group, name, version) {
+
+    var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
     if (ws && ws.readyState === 1) {
       if (!$root.find(".websocket-request-response").is(":visible")) {
         $root.find(".websocket-request-response").fadeTo(250, 1);
@@ -104,23 +122,23 @@ define([
       $root.find(".websocket-request-response-json").html('connected already!');
       return;
     }
-    var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
-
     var url = $root.find(".websocket-request-url").val();
 
     $root.find(".websocket-request-response").fadeTo(250, 1);
     $root.find(".websocket-request-response-json").html("Connecting...");
 
     try {
-      ws = new WebSocket(url, 'echo-protocol');
+      ws = new WebSocket(url, ['soap', 'xmpp', 'echo-protocol']);
     } catch (e) {
       $root.find(".websocket-request-response-json").html(e.message);
+      return;
     }
 
     ws.onopen = function() {
       $root.find(".websocket-request-response-json").html("Connected");
     }
-    ws.onmessage = function(event) {
+
+    ws.onmessage = function (event) {
       var data = event.data;
       // 处理数据
       if (typeof data === "string") {
@@ -130,9 +148,11 @@ define([
       if (data instanceof ArrayBuffer) {
         $root.find(".websocket-request-response-json").append(JSON.stringify(data));
       }
+
       refreshScrollSpy();
 
-    };
+    };;
+
     ws.onclose = function() {
       $root.find(".websocket-request-response-json").html("closed");
     };
