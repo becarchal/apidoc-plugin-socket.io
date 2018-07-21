@@ -308,24 +308,24 @@
       <form class="form-horizontal">
         <fieldset>
             <div class="form-group">
-              <label class="col-md-3 control-label" for="{{../id}}-websocket-request-url">ws addr</label>
+              <label class="col-md-3 control-label" for="{{id}}-websocket-request-url">ws addr</label>
               <div class="input-group">
-                <input id="{{../id}}-websocket-request-url" type="text" class="form-control websocket-request-url" value="{{article.websocket.url}}" />
+                <input id="{{id}}-websocket-request-url" type="text" class="form-control websocket-request-url" value="{{article.websocket.url}}" />
                 <span class="input-group-addon">{{__ "url"}}</span>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-3 control-label" for="{{../id}}-websocket-request-msg">request message</label>
+              <label class="col-md-3 control-label" for="{{id}}-websocket-request-msg">request message</label>
               <div class="input-group">
-                <textarea id="{{../id}}-websocket-request-msg" class="form-control websocket-request-param" value='{"cmd":{{article.websocket.cmd}},"func":{{article.websocket.func}},"token":"","sign":"test","data":{}}'></textarea>
+                <textarea id="{{id}}-websocket-request-msg" class="form-control websocket-request-param" value='{"cmd":{{article.websocket.cmd}},"func":{{article.websocket.func}},"token":"","sign":"test","data":{}}'></textarea>
                 <span class="input-group-addon">msg</span>
               </div>
             </div>
 
           <div class="form-group">
             <div class="controls pull-right">
-              <button class="btn btn-primary websocket-request-connect" data-sample-request-type="{{article.type}}">{{__ "Connect"}}</button>
-              <button class="btn btn-primary websocket-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-primary websocket-request-connect">{{__ "Connect"}}</button>
+              <button class="btn btn-primary websocket-request-send">{{__ "Send"}}</button>
             </div>
           </div>
           <div class="form-group websocket-request-response" style="display: none;">
