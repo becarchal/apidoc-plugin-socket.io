@@ -31,26 +31,26 @@ Add the tag `apiWebsocket` to your source file indicating turn on websocket requ
  * @api {get} /user/getName getName
  * @apiWebsocket true
  */
- ```
+```
  or custom server address
- ```javascript
+```javascript
  /**
-  * @apiWebsocket ws://localhost:8082
-  */
-  ```
-  or custom cmd func,need global settings support.
-  ```javascript
-  /**
-   * @apiWebsocket user:getName
-   */
-   ```
+ * @apiWebsocket ws://localhost:8082
+ */
+```
+or custom cmd func,need global settings support.
+```javascript
+ /**
+ * @apiWebsocket user:getName
+ */
+```
 
-   or custom all
-   ```javascript
-   /**
-    * @apiWebsocket user:getName ws://localhost:8082
-    */
-    ```
+or custom all
+```javascript
+ /**
+ * @apiWebsocket user:getName ws://localhost:8082
+ */
+```
 #### global settings
 you can turn on the websocket request for all interfaces by adding a single line to `apidoc.json`:
 
