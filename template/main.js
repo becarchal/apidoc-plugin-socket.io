@@ -12,7 +12,8 @@ require.config({
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
         webfontloader: './vendor/webfontloader',
-        list: './vendor/list.min'
+        list: './vendor/list.min',
+        vkbeautify:'./vendor/vkbeautify'
     },
     shim: {
         bootstrap: {
@@ -30,6 +31,9 @@ require.config({
         },
         prettify: {
             exports: 'prettyPrint'
+        },
+        vkbeautify:{
+            exports: 'vkbeautify'
         }
     },
     urlArgs: 'v=' + (new Date()).getTime(),
@@ -49,8 +53,9 @@ require([
     'webfontloader',
     'bootstrap',
     'pathToRegexp',
-    'list'
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
+    'list',
+    'vkbeautify'
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont,vkbeautify) {
 
     // load google web fonts
     loadGoogleFontCss();

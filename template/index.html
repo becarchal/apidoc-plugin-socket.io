@@ -319,7 +319,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="{{id}}-websocket-request-msg">request message</label>
               <div class="input-group">
-                <textarea id="{{id}}-websocket-request-msg" class="form-control websocket-request-param">{"cmd":"{{article.websocket.cmd}}","func":"{{article.websocket.func}}","sign":"test","token":"","data":{}}</textarea>
+                <textarea id="{{id}}-websocket-request-msg" class="form-control websocket-request-param" style="height:150px">{"cmd":"{{article.websocket.cmd}}","func":"{{article.websocket.func}}","sign":"test","token":"","data":{}}</textarea>
                 <span class="input-group-addon">msg</span>
               </div>
             </div>
@@ -327,6 +327,8 @@
           <div class="form-group">
             <div class="controls pull-right">
               <button class="btn btn-primary websocket-request-connect">{{__ "Connect"}}</button>
+              <button class="btn btn-primary websocket-request-format">{{__ "Beautify"}}</button>
+              <button class="btn btn-primary websocket-request-mini">{{__ "Uglify"}}</button>
               <button class="btn btn-primary websocket-request-send">{{__ "Send"}}</button>
             </div>
           </div>

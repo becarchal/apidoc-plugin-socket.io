@@ -36,6 +36,26 @@ define([
       var version = $root.data("version");
       websocketConnect(group, name, version);
     });
+    // websocket beautify
+    $(".websocket-request-format").off("click");
+    $(".websocket-request-format").on("click", function(e) {
+      e.preventDefault();
+      var $root = $(this).parents("article");
+      var group = $root.data("group");
+      var name = $root.data("name");
+      var version = $root.data("version");
+      websocketFormat(group, name, version);
+    });
+    // websocket mini
+    $(".websocket-request-mini").off("click");
+    $(".websocket-request-mini").on("click", function(e) {
+      e.preventDefault();
+      var $root = $(this).parents("article");
+      var group = $root.data("group");
+      var name = $root.data("name");
+      var version = $root.data("version");
+      websocketMini(group, name, version);
+    });
 
     // websocket send
     $(".websocket-request-send").off("click");
@@ -63,6 +83,35 @@ define([
 
   }; // initDynamic
 
+  function websocketMini(group, name, version) {
+    var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
+    var json = $root.find(".websocket-request-param").val();
+    try {
+      $root.find(".websocket-request-param").val(vkbeautify.jsonmin(json));
+    } catch (e) {
+      throw {
+        type: "json error",
+        message: "make sure it's a json data"
+      }
+    }
+    refreshScrollSpy();
+  }
+
+  function websocketFormat(group, name, version) {
+    var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
+    var json = $root.find(".websocket-request-param").val();
+    try {
+      $root.find(".websocket-request-param").val(vkbeautify.json(json, 4));
+    } catch (e) {
+      throw {
+        type: "json error",
+        message: "make sure it's a json data"
+      }
+
+    }
+    refreshScrollSpy();
+  }
+
   function websocketClear(group, name, version) {
     ws = null;
     var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
@@ -86,7 +135,7 @@ define([
     } else {
       var msg = $root.find('.websocket-request-param').val();
       if (msg && msg.length > 0) {
-        ws.onmessage = function (event) {
+        ws.onmessage = function(event) {
           if (!$root.find(".websocket-request-response").is(":visible")) {
             $root.find(".websocket-request-response").fadeTo(250, 1);
           }
@@ -104,7 +153,7 @@ define([
           refreshScrollSpy();
 
         };
-        ws.send(msg);
+        ws.send(vkbeautify.jsonmin(msg));
       } else {
         $root.find('.websocket-request-param').focus();
       }
@@ -130,7 +179,7 @@ define([
     $root.find(".websocket-request-response-json").html("Connecting...");
 
     try {
-      ws = new WebSocket(url, ['soap', 'xmpp', 'echo-protocol']);
+      ws = new WebSocket(url);
     } catch (e) {
       $root.find(".websocket-request-response-json").html(e.message);
       return;
@@ -140,7 +189,7 @@ define([
       $root.find(".websocket-request-response-json").html("Connected");
     }
 
-    ws.onmessage = function (event) {
+    ws.onmessage = function(event) {
       var data = event.data;
       // 处理数据
       if (typeof data === "string") {
