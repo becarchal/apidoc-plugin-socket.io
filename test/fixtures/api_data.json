@@ -1,21 +1,8 @@
 [
   {
-    "type": "get",
-    "url": "/do/all",
-    "title": "",
-    "group": "User",
-    "websocket": {
-      "cmd": "user",
-      "func": "find",
-      "url": "ws://localhost:8000/df"
-    },
-    "version": "0.0.0",
-    "filename": "test/src/myapp.js",
-    "groupTitle": "User",
-    "name": "GetDoAll"
-  },
-  {
-    "type": "get",
+    "type": [
+      "get"
+    ],
     "url": "/do/cmd-func",
     "title": "",
     "group": "User",
@@ -30,7 +17,9 @@
     "name": "GetDoCmdFunc"
   },
   {
-    "type": "get",
+    "type": [
+      "get"
+    ],
     "url": "/do/off",
     "title": "",
     "group": "User",
@@ -40,7 +29,9 @@
     "name": "GetDoOff"
   },
   {
-    "type": "get",
+    "type": [
+      "get"
+    ],
     "url": "/do/something",
     "title": "",
     "group": "User",
@@ -55,7 +46,10 @@
     "name": "GetDoSomething"
   },
   {
-    "type": "get",
+    "type": [
+      "get",
+      "websockt"
+    ],
     "url": "/do/suffix",
     "title": "",
     "group": "User",
@@ -67,6 +61,24 @@
     "version": "0.0.0",
     "filename": "test/src/myapp.js",
     "groupTitle": "User",
-    "name": "GetDoSuffix"
+    "name": "Get_websocktDoSuffix"
+  },
+  {
+    "type": [
+      "post",
+      "websockt"
+    ],
+    "url": "/do/all",
+    "title": "",
+    "group": "User",
+    "websocket": {
+      "cmd": "user",
+      "func": "find",
+      "url": "ws://localhost:8000/df"
+    },
+    "version": "0.0.0",
+    "filename": "test/src/myapp.js",
+    "groupTitle": "User",
+    "name": "Post_websocktDoAll"
   }
 ]

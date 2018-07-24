@@ -6,6 +6,17 @@ define([
 
     /**
      * Return a text as markdown.
+     * @param Array text
+     */
+    Handlebars.registerHelper('first', function(array) {
+        if ( ! array || Object.prototype.toString.apply(array)!=='[object Array]') {
+          return array;
+        }
+
+        return array[0];
+    });
+    /**
+     * Return a text as markdown.
      * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
      * Should be replaced with a full markdown lib.
      * @param string text

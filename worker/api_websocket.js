@@ -52,6 +52,12 @@ function postProcess(parsedFiles, filenames, preProcess, packageInfos) {
           }
         }
       }
+
+      if (block.local["type"] && block.local["type"].indexOf(targetName) === -1) {
+        if (block.local[targetName]) {
+          block.local["type"].push(targetName);
+        }
+      }
     });
   });
 }

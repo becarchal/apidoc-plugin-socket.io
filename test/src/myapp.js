@@ -25,7 +25,7 @@ function doSomething() {
     console.log('best app ever');
 }
 /**
- * @api {get} /do/all
+ * @api {post,websockt} /do/all
  * @apiGroup User
  * @apiWebsocket {user:find} ws://localhost:8000/df
  */
@@ -33,7 +33,7 @@ function doSomething() {
     console.log('best app ever');
 }
 /**
- * @api {get} /do/suffix
+ * @api {get,websockt} /do/suffix
  * @apiGroup User
  * @apiWebsocket /df
  */

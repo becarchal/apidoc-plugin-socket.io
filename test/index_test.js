@@ -68,8 +68,8 @@ describe('Create doc and compare with fixture', function() {
         var createdLines = createdContent.split(/\n|\r/);
         createdLines.push(''); // Empty line at end.
 
-        var p = path.join(__dirname, 'fixtures');
-        fs.writeFileSync(p + '/api_data2.json', createdLines);
+        // var p = path.join(__dirname, 'fixtures');
+        // fs.writeFileSync(p + '/api_data2.json', createdLines);
         for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
             if (fixtureLines[lineNumber] !== createdLines[lineNumber])
                 throw new Error('Generated file does not equals to fixture api_data.json in line ' + (lineNumber + 1) +

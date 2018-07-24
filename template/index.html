@@ -131,8 +131,10 @@
     {{#if article.description}}
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
-    <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
-    <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
+    {{#each article.type}}
+    <span class="type type__{{toLowerCase this}}">{{toLowerCase this}}</span>
+    {{/each}}
+    <pre class="prettyprint language-html" data-type="{{first article.type}}"><code>{{article.url}}</code></pre>
 
     {{#if article.permission}}
       <p>
@@ -287,7 +289,7 @@
 
           <div class="form-group">
             <div class="controls pull-right">
-              <button class="btn btn-primary sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-primary sample-request-send" data-sample-request-type="{{first article.type}}">{{__ "Send"}}</button>
             </div>
           </div>
           <div class="form-group sample-request-response" style="display: none;">
@@ -373,7 +375,7 @@
       {{/if}}
     {{/if}}
 
-    <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
+    <pre class="prettyprint language-html" data-type="{{first article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 

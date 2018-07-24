@@ -67,6 +67,20 @@ just as the way as `sampleUrl`; this config url apply by plugin unless you turn 
 
 `apidoc -i example -t ./node_modules/apidoc-plugin-bic-ws/template`
 
+## enhance api tag
+
+`@api {websocket} cmd:func your_api_title`
+
+or
+
+`@api cmd:func your_api_title`
+
+ or maybe, your app support both http and websocket
+
+ `@api {get,websocket} /cmd/func your_api_title`
+
+
+
 ## Note
-- this plugin work with the handlebars template,so have to run with `-t` opation.
+- this plugin work with the `handlebars` template,so have to run with `-t` opation.
 - all changes powered by apidoc `worker` and `parser` extension,see parser and worker directory for detail.

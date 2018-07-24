@@ -93,6 +93,7 @@ define([
           var data = event.data;
           // 处理数据
           if (typeof data === "string") {
+            $root.find(".websocket-request-response-json").append("\n");
             $root.find(".websocket-request-response-json").append(data);
           }
 
@@ -119,7 +120,8 @@ define([
       if (!$root.find(".websocket-request-response").is(":visible")) {
         $root.find(".websocket-request-response").fadeTo(250, 1);
       }
-      $root.find(".websocket-request-response-json").html('connected already!');
+      $root.find(".websocket-request-response-json").append('\n');
+      $root.find(".websocket-request-response-json").append('connected already!');
       return;
     }
     var url = $root.find(".websocket-request-url").val();
