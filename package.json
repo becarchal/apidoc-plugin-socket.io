@@ -1,5 +1,5 @@
 {
-  "name": "apidoc-plugin-bic-ws",
+  "name": "apidoc-plugin-websocket",
   "version": "1.1.0",
   "description": "Only a simple websocket plugin for apidoc.",
   "author": "hu jiawei <gbrjia@gmail.com>",
@@ -11,19 +11,20 @@
   "homepage": "http://apidocjs.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coding-fox/apidoc-plugin-test.git"
+    "url": "https://github.com/coding-fox/apidoc-plugin-websocket.git"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint",
-    "build-example": "cd .. && apidoc-plugin-bic-ws/node_modules/apidoc/bin/apidoc -i apidoc-plugin-bic-ws/test/src/ -o apidoc-plugin-bic-ws/tmp/ --debug --verbose && cd apidoc-plugin-bic-ws",
+    "build-example": "cd .. && apidoc-plugin-websocket/node_modules/apidoc/bin/apidoc -i apidoc-plugin-websocket/test/src/ -o apidoc-plugin-websocket/tmp/ --debug --verbose && cd apidoc-plugin-websocket",
     "check-updates": "npm-check-updates"
   },
   "keywords": [
     "apidoc",
     "plugin",
     "apidoc-plugin",
-    "apidoc-websocket"
+    "apidoc-websocket",
+    "websocket"
   ],
   "engines": {
     "node": ">= 0.10.0"
