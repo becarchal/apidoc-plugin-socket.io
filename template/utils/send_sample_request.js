@@ -142,18 +142,25 @@ define([
           var data = event.data;
           // 处理数据
           if (typeof data === "string") {
-            $root.find(".websocket-request-response-json").append("\n");
-            $root.find(".websocket-request-response-json").append(data);
+            try {
+              data = vkbeautify.json(data, 4)
+            } catch (e) {
+            }
+            $root.find(".websocket-request-response-json").html(data);
           }
 
           if (data instanceof ArrayBuffer) {
-            $root.find(".websocket-request-response-json").append(JSON.stringify(data));
+            $root.find(".websocket-request-response-json").html(JSON.stringify(data));
           }
 
           refreshScrollSpy();
 
         };
-        ws.send(vkbeautify.jsonmin(msg));
+        try {
+          msg = vkbeautify.jsonmin(msg);
+        } catch (e) {
+        }
+        ws.send(msg);
       } else {
         $root.find('.websocket-request-param').focus();
       }
@@ -169,8 +176,7 @@ define([
       if (!$root.find(".websocket-request-response").is(":visible")) {
         $root.find(".websocket-request-response").fadeTo(250, 1);
       }
-      $root.find(".websocket-request-response-json").append('\n');
-      $root.find(".websocket-request-response-json").append('connected already!');
+      $root.find(".websocket-request-response-json").html('connected already!');
       return;
     }
     var url = $root.find(".websocket-request-url").val();
@@ -193,11 +199,11 @@ define([
       var data = event.data;
       // 处理数据
       if (typeof data === "string") {
-        $root.find(".websocket-request-response-json").append(data);
+        $root.find(".websocket-request-response-json").html(data);
       }
 
       if (data instanceof ArrayBuffer) {
-        $root.find(".websocket-request-response-json").append(JSON.stringify(data));
+        $root.find(".websocket-request-response-json").html(JSON.stringify(data));
       }
 
       refreshScrollSpy();
