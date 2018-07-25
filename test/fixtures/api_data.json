@@ -1,84 +1,89 @@
 [
   {
     "type": [
-      "get"
+      "websocket"
     ],
-    "url": "/do/cmd-func",
-    "title": "",
+    "url": "do:anything",
+    "title": "for do anything",
     "group": "User",
-    "websocket": {
-      "cmd": "user",
-      "func": "look",
-      "url": "ws://localhost:3000"
-    },
+    "name": "doAnything",
     "version": "0.0.0",
     "filename": "test/src/myapp.js",
     "groupTitle": "User",
-    "name": "GetDoCmdFunc"
-  },
-  {
-    "type": [
-      "get"
-    ],
-    "url": "/do/off",
-    "title": "",
-    "group": "User",
-    "version": "0.0.0",
-    "filename": "test/src/myapp.js",
-    "groupTitle": "User",
-    "name": "GetDoOff"
-  },
-  {
-    "type": [
-      "get"
-    ],
-    "url": "/do/something",
-    "title": "",
-    "group": "User",
     "websocket": {
-      "url": "ws://localhost:3000",
       "cmd": "do",
-      "func": "something"
+      "func": "anything",
+      "url": "ws://localhost:3000"
+    }
+  },
+  {
+    "type": [
+      "websocket"
+    ],
+    "url": "do:otherThing",
+    "title": "for do otherThing",
+    "group": "User",
+    "name": "doOtherThing",
+    "websocket": {
+      "cmd": "do",
+      "func": "otherThing",
+      "url": "ws://localhost:3000/subpath/subversion"
     },
     "version": "0.0.0",
     "filename": "test/src/myapp.js",
-    "groupTitle": "User",
-    "name": "GetDoSomething"
+    "groupTitle": "User"
+  },
+  {
+    "type": [
+      "websocket"
+    ],
+    "url": "do:somthing",
+    "title": "for do somthing",
+    "group": "User",
+    "name": "doSomething",
+    "websocket": {
+      "cmd": "do",
+      "func": "somthing",
+      "url": "ws://localhost:8082"
+    },
+    "version": "0.0.0",
+    "filename": "test/src/myapp.js",
+    "groupTitle": "User"
   },
   {
     "type": [
       "get",
-      "websockt"
+      "websocket"
     ],
-    "url": "/do/suffix",
-    "title": "",
+    "url": "user/find",
+    "title": "find a user",
     "group": "User",
+    "name": "findUser",
     "websocket": {
-      "url": "ws://localhost:3000/df",
-      "cmd": "do",
-      "func": "suffix"
+      "cmd": "ws_user",
+      "func": "ws_find",
+      "url": "ws://localhost:3000"
     },
     "version": "0.0.0",
     "filename": "test/src/myapp.js",
-    "groupTitle": "User",
-    "name": "Get_websocktDoSuffix"
+    "groupTitle": "User"
   },
   {
     "type": [
-      "post",
-      "websockt"
+      "get",
+      "websocket"
     ],
-    "url": "/do/all",
-    "title": "",
+    "url": "user/look",
+    "title": "look a user",
     "group": "User",
-    "websocket": {
-      "cmd": "user",
-      "func": "find",
-      "url": "ws://localhost:8000/df"
-    },
+    "name": "lookUser",
     "version": "0.0.0",
     "filename": "test/src/myapp.js",
     "groupTitle": "User",
-    "name": "Post_websocktDoAll"
+    "websocket": {
+      "cmd": "user",
+      "func": "look",
+      "url": "ws://localhost:3000"
+    }
   }
 ]

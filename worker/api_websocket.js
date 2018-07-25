@@ -18,7 +18,11 @@ function postProcess(parsedFiles, filenames, preProcess, packageInfos) {
         var entry = block.local[targetName];
 
         if (entry === true) {
-          entry = {};
+          entry = {
+            cmd: null,
+            func: null,
+            url: null
+          };
           entry.url = packageInfos.wsRequest;
         } else {
           if (!entry.url) {

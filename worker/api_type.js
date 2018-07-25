@@ -1,5 +1,6 @@
 /**
  * PostProcess
+ * format the `type` string to Array
  *
  * @param {Object[]} parsedFiles
  * @param {String[]} filenames
@@ -14,6 +15,8 @@ function postProcess(parsedFiles, filenames, preProcess, packageInfos) {
       var typeStr = block.local[targetName];
       if (typeStr) {
         block.local[targetName] = typeStr.split(",");
+      }else{
+        block.local[targetName] = [];
       }
     });
   });

@@ -1,54 +1,29 @@
-// Same as @apiParam
 var trim = require('../utils/trim');
 
 function parse(content, source) {
   content = trim(content);
-  if (content === 'true') {
-    return {
-      websocket: true
-    }
-  } else if (content === 'false') {
-    return {
-      websocket: false
-    }
+  var res = {
+    websocket: true
+  };
+  if (content === 'true') {} else if (content === 'false') {
+
+    res.websocket = false
+
   } else {
+
     //match all format
-    var res = /^\{(.*):(.*)\}\s+(.+)$/.exec(content);
+    var res = /^(?:\{([^\}]+):([^\}]*)\}?\s*)?(?:\s*([^\{\}]+))?/.exec(content);
     if (res) {
-      return {
+      res = {
         websocket: {
-          cmd: trim(res[1]),
-          func: trim(res[2]),
-          url: trim(res[3])
+          cmd: res[1] ? trim(res[1]) : null,
+          func: res[2] ? trim(res[2]) : null,
+          url: res[3] ? trim(res[3]) : null
         }
       };
-
-    } else {
-      //match only url
-      res = /^([^\{]+)$/.exec(content);
-      if (res) {
-        return {
-          websocket: {
-            url: trim(res[1])
-          }
-        }
-      } else {
-        //match only cmd:func
-        res = /^\{(.*):(.*)\}$/.exec(content);
-        if (res) {
-          return {
-            websocket: {
-              cmd: trim(res[1]),
-              func: trim(res[2])
-            }
-          }
-        }
-      }
-      return {
-        websocket: true
-      }
     }
   }
+  return res;
 }
 
 /**

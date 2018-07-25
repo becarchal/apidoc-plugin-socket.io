@@ -4,6 +4,8 @@
 var websocketParser = require('./parser/api_websocket.js');
 var websocketWorker = require('./worker/api_websocket.js');
 var typeWorker      = require('./worker/api_type.js');
+var sampleUrlFilter = require('./filter/sample_url.js');
+
 
 var app = {};
 
@@ -15,6 +17,7 @@ module.exports = {
         app.workers.apitype      = typeWorker;
         app.parsers.apiwebsocket = websocketParser;
         app.workers.apiwebsocket = websocketWorker;
+        app.filters.apisampleurl = sampleUrlFilter;
 
     }
 };
