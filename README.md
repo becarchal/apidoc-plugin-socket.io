@@ -17,10 +17,10 @@ After install this pulgin in right position, run `apidoc` in your `apidoc.json` 
 apidoc -i example -t ./node_modules/apidoc-plugin-bic-ws/template
 ```
 
-Arg `example` is your source directory path and `apidoc/template` must be replaced with `apidoc-plugin-bic-ws/template` for incompatible.
+Arg `example` is your source directory path and the default `apidoc/template` must be replaced with `apidoc-plugin-bic-ws/template` because of incompatible.
 
 ## Configuration
-### enhance tag
+### Enhance Tag
 
 `@api [{type}] cmd:func your_api_title`
 
@@ -31,7 +31,7 @@ Permited value for type is:
 - get,websocket
 - post,websocket
 
-### support new tag
+### New Tag
 
 `@apiWebsocket arg`
 
@@ -104,7 +104,7 @@ Sometimes,we hava to support http and websocket interface meanwhile,there is onl
  */
 ```
 
-#### global settings
+#### Global Settings
 the `wsRequest` key-vlaue in `apidoc.json` file like this
 
 `"wsRequest": "ws://localhost:8082"`
